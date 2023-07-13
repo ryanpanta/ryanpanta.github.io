@@ -1,0 +1,316 @@
+body {
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    font-family: 'Playfair Display', serif;
+    font-size: 65px;
+    color: #002D5B;
+    line-height: 1.3em;
+    font-style: bold;
+    margin: 0;
+    display: flex;
+}
+.container {
+    background-color: #F3F5F5;
+}
+
+.introducao > h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    color: #494B51;
+    font-weight: normal;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding-top: 45px;
+    gap: 35px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #494B51;
+    font-weight: normal;
+}
+
+.topo {
+    padding-top: 22px;
+    padding-left: 14%;
+}
+.topo > img {
+    width: 7%;
+    height: auto;
+    display: flex;
+}
+
+.introducao {
+    padding-left: 17%;
+    padding-top: 60px;
+    padding-bottom: -50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+.foto-perfil > img {
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 45%;
+    margin-top: -36%;
+}
+
+.botao {
+    margin-top: 50px;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+    width: 8%;
+    height: auto;
+    background-color: #4175fc;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Playfair Display', serif;
+    color: #101218;
+    font-weight: 500;
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    color: #494B51;
+    font-weight: normal;
+    text-align: center;
+}
+
+.descrição > h3{
+    text-align: left;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #494B51;
+    font-weight: normal;
+    text-align: left;
+}
+
+.amor {
+    padding-left: 15%;
+}
+.amor > p{
+    font-family: 'Playfair Display', serif;
+    font-size: 27.36px;
+    font-weight: 500;
+    
+    color: black;
+
+}
+
+
+
+.segundo-lado {
+    margin-top: -7%;
+    
+}
+
+.conteudo-sobremim {
+    width: 1000px;
+    padding-left: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2%;
+    line-height: 26px;
+}
+
+.line-sobremim {
+    border: none;
+    border-bottom: 2px solid #4175fc;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 11%;
+}
+
+.sobre-mim-texto > h2{
+    padding-top: 8%;
+    
+}
+
+.sobre-mim-texto > h3{
+    margin-top: -20px;
+}
+
+.line-amor{
+    border: none;
+    border-bottom: 2px solid #4175fc;
+    width: 50px;
+
+}
+
+.conteudo-sobremim > img {
+    margin-top: -14%;
+}
+
+.line-passatempos {
+    border: none;
+    border-bottom: 2px solid #4175fc;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7%;
+}
+
+.gray-shape {
+    background-color: #ececec;
+}
+
+
+.titulo-passatempos {
+    margin-top: 13%;
+    padding-top: 5%;
+}
+
+.passatempos > h3 {
+    margin-top: -1%;
+}
+
+.conteudo-passatempos {
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    padding-top: 30px;
+    line-height: 28px;
+  }
+  
+  .shape-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3%;
+    align-items: flex-start; /* Alinhar no topo */
+  }
+  
+  .design,
+  .tenis-de-mesa,
+  .academia {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 45px 35px;
+    margin: 15px;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Alinhar no topo */
+    text-align: center;
+    height: 70%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0,0.1);
+  }
+  
+  .design > img,
+  .tenis-de-mesa > img,
+  .academia > img {
+    width: 70px;
+  }
+
+  .academia > img {
+    padding-top: 16px;
+  }
+
+  .design > img {
+    margin-top: -12%;
+  }
+
+  
+  .titulo-design > p,
+  .titulo-tenis > p,
+  .titulo-academia > p {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .formação {
+    background-color: #ececec;
+  }
+
+  .shapes-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 45px 35px;
+    width: 70%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ensino-fundamental,
+.ensino-médio,
+.ensino-superior {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+}
+
+.ensino-superior {
+    flex-basis: 100%;
+    margin-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.progress-bar {
+    background-color: #ccc;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4175fc;
+    width: 0;
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 50%;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .progress {
+        animation: progressAnimation 2s ease-in-out forwards;
+    }
+}
+  
