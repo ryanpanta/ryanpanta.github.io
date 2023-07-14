@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open Sans'>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -127,51 +128,76 @@
             </section>
             <section class="formação">
                 <h2>Formação Acadêmica</h2>
-                <h3>Aqui está meu histórico acadêmico</h3>
+                <h3 class="desc-formacao">Aqui está meu histórico acadêmico</h3>
+                <div class="line-formação"></div>
                 <div class="shapes-row">
                     <div class="ensino-fundamental">
-                        <p>Ensino Fundamental</p>
-                        <p>2013-2016</p>
-                        <p>Realizei meu ensino fundamental na Escola Municipal Antônio Joaquim Vieira em Alfenas, Minas
+                        <p class="titulo-ensino">Ensino Fundamental</p>
+                        <p class="data-escola">2013-2016</p>
+                        <p class="descricao-formacao">Realizei meu ensino fundamental na Escola Municipal Antônio
+                            Joaquim Vieira em Alfenas, Minas
                             Gerais
                         </p>
                         <div class="progress-bar">
-                            <div class="progress" data-progress="50%"></div>
+                            <div class="progress" data-progress="100%"></div>
+                            <!-- <span class="progress-text">Ensino Fundamental</span> -->
                         </div>
                     </div>
                     <div class="ensino-médio">
-                        <p>Ensino Médio</p>
-                        <p>2017-2019</p>
-                        <p>Realizei meu ensino médio na Escola Estadual Doutor Emílio da Silveira em Alfenas, Minas
+                        <p class="titulo-ensino">Ensino Médio</p>
+                        <p class="data-escola">2017-2019</p>
+                        <p class="descricao-formacao">Realizei meu ensino médio na Escola Estadual Doutor Emílio da
+                            Silveira em Alfenas, Minas
                             Gerais
                         </p>
+                        <div class="progress-bar">
+                            <div class="progress" data-progress="100%"></div>
+                            <!-- <span class="progress-text">Ensino Médio</span> -->
+                        </div>
                     </div>
-                </div>
-                <div class="ensino-superior">
-                    <p>Ensino Superior</p>
-                    <p>2021-2024</p>
-                    <p>Estou cursando Ciência da Computação na Universidade Federal de Alfenas, em Alfenas, Minas Gerais
-                    </p>
-                </div>
+                    <div class="ensino-superior">
+                        <p class="titulo-ensino">Ensino Superior</p>
+                        <p class="data-escola">2021-2024</p>
+                        <p class="descricao-formacao">Estou cursando Ciência da Computação na Universidade Federal de
+                            Alfenas, em Alfenas, Minas
+                            Gerais
+                        </p>
+                        <div class="progress-bar">
+                            <div class="progress" data-progress="62.5%"></div>
+                            <!-- <span class="progress-text">Ensino Superior</span> -->
+                        </div>
             </section>
             <section class="protfolio">
-                <h1>Meu Portfolio</h1>
-                <p>Aqui estão algumas artes digitais feitas para estudo/hobbie</p>
-                <div class="carrossel">
-                    <img
-                        src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/smashburg-q7s15yhw2pg5rph8ais6ojha2ascvfi3z5al6p4lrk.png">
-                    <img
-                        src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/store-mkpp-scaled-q7g5f5a5hhmxah40jatrndlbj5kiblae63txj13kmo.jpg">
-                    <img
-                        src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/paper-mkp-logo-scaled-q7s16i8i2876jiok39bcmwhyje32d2oh1uzs9ibc4w.jpg">
-                    <img
-                        src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/docinho2-q8ogxq6lbaq1lgd9kfyehy9k8i47oegzwonhp8ccvk.png">
-                    <img
-                        src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/achocolatado-q7g5fbv0tbvxjquggvo5mtxjouo2th0ij0ebvyttf4.png">
+                <h2 class="meu-portfolio">Meu Portfolio</h2>
+                <h3 class="desc-portfolio">Aqui estão algumas artes digitais feitas para estudo/hobbie</h3>
+                <div class="line-portfolio"></div>
+                <div class="carrossel-container">
+                    <div class="carrossel">
+                        <img class="smash"
+                            src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/smashburg-q7s15yhw2pg5rph8ais6ojha2ascvfi3z5al6p4lrk.png">
+                        <img class="ducks-mckp"
+                            src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/store-mkpp-scaled-q7g5f5a5hhmxah40jatrndlbj5kiblae63txj13kmo.jpg">
+                        <img class="paper-mckp"
+                            src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/paper-mkp-logo-scaled-q7s16i8i2876jiok39bcmwhyje32d2oh1uzs9ibc4w.jpg">
+                        <img class="docinho"
+                            src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/docinho2-q8ogxq6lbaq1lgd9kfyehy9k8i47oegzwonhp8ccvk.png">
+                        <img class="achocolatado"
+                            src="https://dev-ryanrodrigues.pantheonsite.io/wp-content/uploads/elementor/thumbs/achocolatado-q7g5fbv0tbvxjquggvo5mtxjouo2th0ij0ebvyttf4.png">
+
+                    </div>
+                    <div class="carrossel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="prev-button">&#8592;</div>
+                    <div class="next-button">&#8594;</div>
                 </div>
             </section>
             <section class="contato">
-                <h1>Contato</h1>
+                <h2>Contato</h2>
                 <div class="contato-redes-sociais">
                     <p>Redes Sociais</p>
 

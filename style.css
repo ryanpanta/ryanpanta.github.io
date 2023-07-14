@@ -255,6 +255,101 @@ p {
     background-color: #ececec;
   }
 
+  .formação > h2{
+    margin-top: 10%;
+  }
+
+  .desc-formacao {
+    margin-top: -15px;
+  }
+
+  .line-formação{
+    border: none;
+    border-bottom: 2px solid #4175fc;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7%;
+  }
+
+  .meu-portfolio{
+    padding-top: 10%;
+  }
+
+  .desc-portfolio{
+    margin-top: -15px;
+  }
+
+  .line-portfolio{
+    border: none;
+    border-bottom: 2px solid #4175fc;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7%;
+  }
+
+  .carrossel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .carrossel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carrossel-dots {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #000000;
+  }
+
+  .smash, .ducks-mckp, .paper-mckp, .docinho, .achocolatado{
+    width: 36%;
+    height: auto;
+    object-fit: contain;
+    margin-right: 10px;
+    border-radius: 12px;
+  }
+  
+
+
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
   .shapes-row {
     display: flex;
     justify-content: center;
@@ -271,26 +366,44 @@ p {
 .ensino-médio,
 .ensino-superior {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 25px;
     border-radius: 5px;
     text-align: center;
     flex: 1;
 }
 
 .ensino-superior {
+    
     flex-basis: 100%;
     margin-top: 20px;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 15%;
+    margin-right: 15%;
     width: 40%;
+    height: auto;
+}
+
+.data-escola {
+    color: #4175fc 
+}
+
+.titulo-ensino {
+    font-weight: bold;
+    margin-top: -4px;
+}
+
+.descricao-formacao {
+    line-height: 160%;
+    font-size: 15px;
+    padding-bottom: 15px;
 }
 
 .progress-bar {
     background-color: #ccc;
-    height: 10px;
-    border-radius: 5px;
+    height: 16px;
+    border-radius: 10px;
     overflow: hidden;
+
 }
 
 .progress {
@@ -299,18 +412,43 @@ p {
     width: 0;
 }
 
-@keyframes progressAnimation {
+  .ensino-fundamental .progress {
+    animation: progressAnimationFundamental 2s ease-in-out forwards;
+  }
+  
+  .ensino-médio .progress {
+    animation: progressAnimationMédio 2s ease-in-out forwards;
+  }
+  
+  .ensino-superior .progress {
+    animation: progressAnimationSuperior 2s ease-in-out forwards;
+  }
+  
+  @keyframes progressAnimationFundamental {
     0% {
-        width: 0;
+      width: 0;
     }
     100% {
-        width: 50%;
+      width: 100%;
     }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .progress {
-        animation: progressAnimation 2s ease-in-out forwards;
-    }
-}
+  }
   
+  @keyframes progressAnimationMédio {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  @keyframes progressAnimationSuperior {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 62.5%;
+    }
+  }
+
+
