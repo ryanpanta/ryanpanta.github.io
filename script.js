@@ -1,106 +1,201 @@
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    return rect.top >= 0 && rect.bottom <= windowHeight;
+const songName = document.querySelector(".song-name")
+const bandName = document.querySelector(".band-name")
+const cover = document.querySelector(".cover")
+const song = document.getElementById("audio")
+const play = document.getElementById("play")
+const previous = document.getElementById("previous")
+const next = document.getElementById("next")
+const currentProgress = document.querySelector(".current-progress")
+const progressContainer = document.querySelector(".progress-container")
+const shuffle = document.getElementById("shuffle")
+const repeat = document.getElementById("repeat")
+const songTime = document.getElementById("song-time")
+const totalTime = document.getElementById("total-time")
+const like = document.getElementById("like")
+
+
+
+let isPlaying = false
+let isShuffle = false
+let repeatOn = false
+
+const comoUmAnjo = {
+    songName: "Como um Anjo",
+    artist: "César Menotti & Fabiano",
+    file: "como-um-anjo",
+    liked: false
 }
 
-function animateProgressBar() {
-    const shape1 = document.querySelector('.ensino-fundamental .progress-bar');
-    const shape2 = document.querySelector('.ensino-médio .progress-bar');
-    const shape3 = document.querySelector('.ensino-superior .progress-bar');
+const anjos = {
+    songName: "Anjos (Pra quem tem fé)",
+    artist: "O Rappa",
+    file: "anjos",
+    liked: false
+}
 
-    if (isInViewport(shape1)) {
-        shape1.querySelector('.progress').style.animation = 'progressAnimationFundamental 2s ease-in-out forwards';
+const existeUmLugar = {
+    songName : "Mas Existe um Lugar - Remix",
+    artist: "Cryzin, Manoel Gomes, Kaio Viana, Noemi Leal",
+    file: "existe-um-lugar",
+    liked: false
+}
+
+const originalPlaylist = JSON.parse(localStorage.getItem('playlist')) ?? [comoUmAnjo, anjos, existeUmLugar]
+let sortedPlaylist = [...originalPlaylist]
+let index = 0
+
+function playSong() {
+    play.querySelector(".bi").classList = "bi bi-pause-circle-fill"
+    song.play()
+    isPlaying = true
+}
+
+function pauseSong() {
+    play.querySelector(".bi").classList = "bi bi-play-circle-fill"
+    song.pause()
+    isPlaying = false
+}
+
+function playPauseDecider(){
+    if(isPlaying === true)
+        pauseSong()
+    else
+        playSong()
+}
+
+function likeButtonRender(){
+    if(sortedPlaylist[index].liked === true) {
+        like.querySelector(".bi").classList = "bi bi-heart-fill"
+        like.classList.add("button-active")
     } else {
-        shape1.querySelector('.progress').style.animation = 'none';
+        like.querySelector(".bi").classList = "bi bi-heart"
+        like.classList.remove("button-active")
     }
+}   
 
-    if (isInViewport(shape2)) {
-        shape2.querySelector('.progress').style.animation = 'progressAnimationMédio 2s ease-in-out forwards';
+
+function initializeSong(){
+    cover.src = `images/${sortedPlaylist[index].file}.jpg`
+    song.src = `songs/${sortedPlaylist[index].file}.mp3`
+    songName.innerHTML = sortedPlaylist[index].songName
+    bandName.innerHTML = sortedPlaylist[index].artist
+    likeButtonRender()
+}
+
+function previousSong(){
+    if(index === 0)
+        index = sortedPlaylist.length-1
+    else
+        index -= 1
+    initializeSong()
+    playSong()
+}
+
+function nextSong(){
+    if(index === sortedPlaylist.length-1)
+        index = 0
+    else
+        index += 1
+    initializeSong()
+    playSong()
+}
+
+function updateProgress(){
+    const barWidth = (song.currentTime / song.duration) * 100
+    currentProgress.style.setProperty("--progress", `${barWidth}%`)
+    //currentProgress.style.width = `${barWidth}%`
+    updateCurrentTime()
+}
+
+function jumpTo(event){
+    const width = progressContainer.clientWidth
+    const clickPosition = event.offsetX
+    const jumpToTime = (clickPosition / width) * song.duration
+    song.currentTime = jumpToTime
+}   
+
+function shuffleArray(preShuffleArray){
+    let currentIndex = preShuffleArray.length - 1
+    while(currentIndex > 0){
+        let randomIndex = Math.floor(Math.random() * sortedPlaylist.length)
+        let aux = preShuffleArray[currentIndex]
+        preShuffleArray[currentIndex] = preShuffleArray[randomIndex]
+        preShuffleArray[randomIndex] = aux
+        currentIndex--;
+    }
+}
+
+function shuffleButtonClicked(){
+    if(isShuffle === false) {
+        isShuffle = true
+        shuffleArray(sortedPlaylist)
+        shuffle.classList.add("button-active")
+    }
+    else{
+        isShuffle = false
+        sortedPlaylist = [...originalPlaylist]
+        shuffle.classList.remove("button-active")
+    }
+}
+
+function repeatButtonClicked(){
+    if(repeatOn === false){
+        repeatOn = true
+        repeat.classList.add("button-active")
+    }
+    else {
+        repeatOn = false
+        repeat.classList.remove("button-active")
+    }    
+}
+
+function nextOrRepeat(){
+    if(repeatOn === false)
+        nextSong()
+    else
+        playSong()
+}
+
+function toMMSS(originalNumber) {
+    let hours = Math.floor(originalNumber / 3600)
+    let min = Math.floor((originalNumber - hours * 3600) / 60)
+    let secs = Math.floor(originalNumber - hours * 3600 - min * 60)
+    
+    return `${min.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`   
+}
+
+function updateCurrentTime(){
+    songTime.innerHTML = toMMSS(song.currentTime)
+}
+
+function updateTotalTime(){
+    totalTime.innerHTML = toMMSS(song.duration)
+}
+
+function likeButtonClicked(){
+    if(sortedPlaylist[index].liked === false) {
+        sortedPlaylist[index].liked = true
     } else {
-        shape2.querySelector('.progress').style.animation = 'none';
+        sortedPlaylist[index].liked = false
     }
+    likeButtonRender()
+    localStorage.setItem('playlist', JSON.stringify(originalPlaylist));
 
-    if (isInViewport(shape3)) {
-        shape3.querySelector('.progress').style.animation = 'progressAnimationSuperior 2s ease-in-out forwards';
-    } else {
-        shape3.querySelector('.progress').style.animation = 'none';
-    }
 }
 
+initializeSong()
 
-const carousel = document.querySelector('.carrossel');
-const images = carousel.querySelectorAll('img');
-const dots = document.querySelectorAll('.dot');
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
-let currentIndex = 0;
-const slideWidth = images[0].clientWidth;
-const slideOffset = slideWidth * 1.5;
-let intervalId;
 
-document.addEventListener("DOMContentLoaded", function () {
-    var linkedinIcon = document.querySelector(".linkedin");
+play.addEventListener("click", playPauseDecider)
+previous.addEventListener("click", previousSong)
+next.addEventListener("click", nextSong)
+song.addEventListener("timeupdate", updateProgress)
+song.addEventListener("ended", nextOrRepeat)
+song.addEventListener("loadedmetadata", updateTotalTime) 
+progressContainer.addEventListener("click", jumpTo)
+shuffle.addEventListener("click", shuffleButtonClicked)
+repeat.addEventListener("click", repeatButtonClicked)
+like.addEventListener("click", likeButtonClicked)
 
-    linkedinIcon.addEventListener("mouseover", function () {
-        this.style.fill = "#0000FF"; /* Cor azul */
-    });
 
-    linkedinIcon.addEventListener("mouseout", function () {
-        this.style.fill = "#000000"; /* Restaura a cor padrão */
-    });
-});
 
-function slideTo(index, fastTransition = false) {
-    carousel.style.transition = fastTransition ? 'transform 1 ease-in-out' : 'transform 1 ease-in-out';
-    carousel.style.transform = `translateX(-${slideOffset * index}px)`;
-    updateActiveDot(index);
-}
-
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % images.length;
-    slideTo(currentIndex, true);
-    setTimeout(() => {
-        slideTo(currentIndex);
-    }, 100);
-}
-
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    slideTo(currentIndex);
-}
-
-function updateActiveDot(index) {
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-    });
-}
-
-function startCarousel() {
-    intervalId = setInterval(nextSlide, 5000);
-}
-
-function stopCarousel() {
-    clearInterval(intervalId);
-}
-
-nextButton.addEventListener('click', () => {
-    stopCarousel();
-    nextSlide();
-    startCarousel();
-});
-
-prevButton.addEventListener('click', () => {
-    stopCarousel();
-    prevSlide();
-    startCarousel();
-});
-
-carousel.addEventListener('mouseenter', stopCarousel);
-carousel.addEventListener('mouseleave', startCarousel);
-
-window.addEventListener('scroll', animateProgressBar);
-window.addEventListener('resize', animateProgressBar);
-document.addEventListener('DOMContentLoaded', animateProgressBar);
-
-startCarousel();
